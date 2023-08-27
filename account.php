@@ -1,21 +1,12 @@
+<?php require 'header.php'; ?>
 
 <?php
-session_start();
-if (isset($_REQUEST['command'])) {
-    if ($_REQUEST['command'] == 'logout') {
-        unset($_SESSION['admin']);
-    }
-}
-?>
 
-<?php
-if (isset($_SESSION['admin'])) {
-    require 'header.php';
     echo '<div class="m-5">';
     echo '<table class="table">';
     echo '<thead>';
     echo '<tr>';
-    echo '<th scope="col">ID</th><th scope="col">名前</th><th scope="col">パスワード</th><th scope="col">アドレス</th>';
+    echo '<th scope="col">ID</th><th scope="col">名前</th><th scope="col" style="width: 5%">パスワード</th>';
     echo '</tr>';
     echo '</thead>';
     foreach ($pdo->query('select * from admin') as $row) {
@@ -30,7 +21,9 @@ if (isset($_SESSION['admin'])) {
     }
     echo '</tbody>';
     echo '</table>';
-} else {
-    echo '<a href="login.php">ログインに戻る</a>';
-}
+
 ?>
+<form action="login.php" method="post">
+    <input type="hidden" name="command" value="logout">
+    <button><input type="submit" value="ログアウト"></button>
+            </form>
