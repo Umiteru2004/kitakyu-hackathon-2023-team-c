@@ -5,8 +5,8 @@ grant all on hakkason.* to 'staff'@'localhost' identified by 'password';
 use hakkason;
 
 -- ユーザー
-create table admin (
-    admin_id int auto_increment primary key,
+create table customer (
+    id int auto_increment primary key,
     username varchar(100) not null unique,
     address varchar(100) not null,
     password varchar(100) not null
@@ -15,10 +15,10 @@ create table admin (
 -- ポイント情報
 create table points (
     point_id int auto_increment primary key,
-    admin_id int not null,
+    customer_id int not null,
     points int not null,
-    foreign key (admin_id) references admin(admin_id)
+    foreign key (customer_id) references customer(id) -- customerテーブルのidカラムを参照
 );
 
 -- ユーザーデータの挿入
-insert into admin (username, address, password) values ('Miyosi', '福岡市', 'aaa_admin');
+insert into customer (username, address, password) values ('Miyosi', '福岡市', 'aaa_admin');

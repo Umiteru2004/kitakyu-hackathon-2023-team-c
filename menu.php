@@ -7,7 +7,7 @@ $pdo=new PDO(
     'password'
 );
 
-if (isset($_SESSION['admin'])) {
+if (isset($_SESSION['customer'])) {
     echo '<div class="m-5">';
     echo '<table class="table">';
     echo '<thead>';
@@ -15,10 +15,10 @@ if (isset($_SESSION['admin'])) {
     echo '<th scope="col">ID</th><th scope="col">名前</th><th scope="col" style="width: 5%">パスワード</th>';
     echo '</tr>';
     echo '</thead>';
-    foreach ($pdo->query('select * from admin') as $row) {
+    foreach ($pdo->query('select * from customer') as $row) {
         echo '<tbody>';
         echo '<tr>';
-        echo '<td>', $row['admin_id'], '</td>';
+        echo '<td>', $row['id'], '</td>';
         echo '<td>', $row['username'], '</td>';
         echo '<td>', $row['password'], '</td>';
         echo '<td>', $row['address'], '</td>';

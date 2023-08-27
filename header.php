@@ -11,18 +11,18 @@ if (isset($_REQUEST['command'])) {
     switch ($_REQUEST['command']) {
         // ログイン
         case 'login':
-            unset($_SESSION['admin']);
-            $sql = $pdo->prepare('select * from admin where username=? and password=?');
+            unset($_SESSION['customer']);
+            $sql = $pdo->prepare('select * from customer where username=? and password=?');
             $sql->execute([$_REQUEST['username'], $_REQUEST['password']]);
             foreach($sql as $row){
-                $_SESSION['admin'] = [
-                    'admin_id' => $row['admin_id'],
+                $_SESSION['customer'] = [
+                    'id' => $row['id'],
                     'username' => $row['username'],
                     'password' => $row['password'],
                     'address' => $row['address']
                 ];
             }
-            if (!isset($_SESSION['admin'])) {
+            if (!isset($_SESSION['customer'])) {
                 // ログイン失敗時の処理
                 $alert = "<script type='text/javascript'>alert('ログイン名もしくはパスワードが間違っています');</script>";
                 echo $alert;
@@ -31,7 +31,7 @@ if (isset($_REQUEST['command'])) {
 
         // ログアウト
         case 'logout':
-            unset($_SESSION['admin']);
+            unset($_SESSION['customer']);
             break;
         // 新規会員登録
         case 'regist':
@@ -41,11 +41,11 @@ if (isset($_REQUEST['command'])) {
                 break;
             }
             // ログイン名の重複確認
-            $sql=$pdo->prepare('select * from admin where username=?');
+            $sql=$pdo->prepare('select * from customer where username=?');
             $sql->execute([htmlspecialchars($_REQUEST['username'])]);
             if (empty($sql->fetchAll())) {
                 // 会員情報を新規登録する
-                $sql=$pdo->prepare('insert into admin values(null,?,?,?)');
+                $sql=$pdo->prepare('insert into customer values(null,?,?,?)');
                 $sql->execute([
                 htmlspecialchars($_REQUEST['username']),
                 htmlspecialchars($_REQUEST['address']),
@@ -70,7 +70,7 @@ if (isset($_REQUEST['command'])) {
 
     <?php
     // ログインしているか
-    if (isset($_SESSION['admin'])) {
+    if (isset($_SESSION['customer'])) {
         echo '<a href="account.php">';
         echo 'ACCOUNT';
         echo '</a>';
