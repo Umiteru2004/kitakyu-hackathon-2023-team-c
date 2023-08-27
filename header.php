@@ -26,8 +26,6 @@ if (isset($_REQUEST['command'])) {
                 // ログイン失敗時の処理
                 $alert = "<script type='text/javascript'>alert('ログイン名もしくはパスワードが間違っています');</script>";
                 echo $alert;
-                //header("Location: login.php"); // ログインページにリダイレクト
-                 // リダイレクト後にスクリプトの実行を終了
             }
             break;
 
@@ -35,7 +33,7 @@ if (isset($_REQUEST['command'])) {
         case 'logout':
             unset($_SESSION['admin']);
             break;
-// 新規会員登録
+        // 新規会員登録
         case 'regist':
             if ($_REQUEST['password'] != $_REQUEST['confirm_password']) {
                 $alert = "<script type='text/javascript'>alert('入力されたパスワードが一致しません');</script>";
@@ -44,7 +42,7 @@ if (isset($_REQUEST['command'])) {
             }
             // ログイン名の重複確認
             $sql=$pdo->prepare('select * from admin where username=?');
-            $sql->execute([htmlspecialchars($_REQUEST['name'])]);
+            $sql->execute([htmlspecialchars($_REQUEST['username'])]);
             if (empty($sql->fetchAll())) {
                 // 会員情報を新規登録する
                 $sql=$pdo->prepare('insert into admin values(null,?,?,?)');
@@ -66,24 +64,23 @@ if (isset($_REQUEST['command'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ウォーキング</title>
 </head>
 <body>
 
     <?php
     // ログインしているか
     if (isset($_SESSION['admin'])) {
-        echo '<a href="account.php" class="order_online">';
+        echo '<a href="account.php">';
         echo 'ACCOUNT';
         echo '</a>';
     } else {
-        echo '<a href="login.php" class="order_online">';
+        echo '<a href="login.php">';
         echo 'LOGIN';
         echo '</a>';
-        echo '<a href="new.php" class="order_online">';
+        echo '<a href="new.php">';
         echo 'new';
         echo '</a>';
     }
     ?>
-</body>
-</html>
+

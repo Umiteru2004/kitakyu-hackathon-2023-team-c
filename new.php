@@ -8,9 +8,8 @@
         <label>ユーザー名: <input type="text" name="username"></label><br>
         <label>アドレス: <input type="text" name="address"></label><br>
         <label>パスワード: <input type="password" name="password"></label><br>
-        <label>パスワード: <input type="password" name="confirm_password"></label><br>
-        <input type="submit" value="追加">
+        <label>パスワード(確認): <input type="password" name="confirm_password"></label><br>
+        <input type="submit" value="会員追加">
     </form>
-    
 
 <?php require 'footer.php'; ?>
