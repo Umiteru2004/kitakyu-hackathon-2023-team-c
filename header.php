@@ -35,8 +35,31 @@ if (isset($_REQUEST['command'])) {
         case 'logout':
             unset($_SESSION['admin']);
             break;
-    }
-}
+// 新規会員登録
+        case 'regist':
+            if ($_REQUEST['password'] != $_REQUEST['confirm_password']) {
+                $alert = "<script type='text/javascript'>alert('入力されたパスワードが一致しません');</script>";
+                echo $alert;
+                break;
+            }
+            // ログイン名の重複確認
+            $sql=$pdo->prepare('select * from admin where username=?');
+            $sql->execute([htmlspecialchars($_REQUEST['name'])]);
+            if (empty($sql->fetchAll())) {
+                // 会員情報を新規登録する
+                $sql=$pdo->prepare('insert into admin values(null,?,?,?)');
+                $sql->execute([
+                htmlspecialchars($_REQUEST['username']),
+                htmlspecialchars($_REQUEST['address']),
+                htmlspecialchars($_REQUEST['password'])
+                ]);
+                break;
+            } else {
+                $alert = "<script type='text/javascript'>alert('使用済みのログイン名です');</script>";
+                echo $alert;
+            }
+            break;
+        }}
 ?>
 <!DOCTYPE html>
 <html lang="en">
