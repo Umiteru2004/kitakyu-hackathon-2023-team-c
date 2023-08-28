@@ -28,7 +28,6 @@ if (isset($_REQUEST['command'])) {
                 echo $alert;
             }
             break;
-
         // ログアウト
         case 'logout':
             unset($_SESSION['customer']);
@@ -64,23 +63,33 @@ if (isset($_REQUEST['command'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>ウォーキング</title>
 </head>
 <body>
-
+    <div class= ccc>
+        <h1>タイトル</h1>
+    </div>
     <?php
     // ログインしているか
     if (isset($_SESSION['customer'])) {
+        echo"<div class= ccc>";
         echo '<a href="account.php">';
         echo 'ACCOUNT';
         echo '</a>';
+        echo '<a href="menu.php">';
+        echo 'メインページ';
+        echo '</a>';
+        echo "</div>";
     } else {
+        echo"<div class= ccc>";
         echo '<a href="login.php">';
         echo 'LOGIN';
         echo '</a>';
         echo '<a href="new.php">';
-        echo 'new';
+        echo 'new account';
         echo '</a>';
+        echo "</div>";
     }
     ?>
 
