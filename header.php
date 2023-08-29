@@ -100,8 +100,8 @@ if (isset($_REQUEST['command'])) {
                 break;
             }
             break;
+            }
         }
-    }
 ?>
 <!DOCTYPE html>
 <html lang="ja">
