@@ -8,7 +8,7 @@ $sql_points->execute([$_SESSION['customer']['id']]);
         //ここにユーザー名、アドレス、所得しているポイントを表示
         echo"<div class=aaa>";
         echo"<br>";
-        echo "<p>ユーザー名: " . $_SESSION['customer']['username'] . "</p>";
+        echo "<p>ユーザー名: " . $_SESSION['customer']['name'] . "</p>";
         echo "<p>アドレス: " . $_SESSION['customer']['address'] . "</p>";
         echo "<p>所得しているポイント: " . $row_points['points'] ."</p>";
         echo"</div>";
@@ -16,7 +16,7 @@ $sql_points->execute([$_SESSION['customer']['id']]);
     if ($points == $tmp) {
         echo"<div class=aaa>";
         echo"<br>";
-        echo "<p>ユーザー名: " . $_SESSION['customer']['username'] . "</p>";
+        echo "<p>ユーザー名: " . $_SESSION['customer']['name'] . "</p>";
         echo "<p>アドレス: " . $_SESSION['customer']['address'] . "</p>";
         echo '<p>ポイントはありません</p>';
         echo"</div>";
@@ -26,7 +26,7 @@ $sql_points->execute([$_SESSION['customer']['id']]);
     <form action="account.php" method="post">
         <input type="hidden" name="command" value="address">
         <?php
-        echo '<input type="hidden" name="name" value="', $_SESSION['customer']['username'], '">';
+        echo '<input type="hidden" name="name" value="', $_SESSION['customer']['name'], '">';
         echo '<input type="hidden" name="password" value="', $_SESSION['customer']['password'], '">';
         echo '<table>';
         echo '<tr><td><label>ADDRESS</label></td>';
