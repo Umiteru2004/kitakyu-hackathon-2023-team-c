@@ -1,0 +1,19 @@
+
+html,body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f8ff;
+  border: #1e90ff 2px;
+}
+
+#mapDiv {
+  width: 100%;
+  height: calc(100% - 49px);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 3px;
+  
+}
