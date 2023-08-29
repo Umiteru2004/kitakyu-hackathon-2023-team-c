@@ -23,6 +23,8 @@ const prevPosition = {
 if (storedTotalMovement) {  // ローカルストレージに保存されている移動距離の記録がある場合
   // 総移動距離の初期値を記録に合わせる
   totalMovement = storedTotalMovement;
+
+  console.log("ローカルストレージからこれまでの移動距離を読み込みました。")
 }
 
 // ページ終了時に総移動距離をローカルストレージに保存
@@ -33,6 +35,9 @@ window.addEventListener("unload", pageUnload);
 const setPrevPosition = (latitude, longitude) => {
   prevPosition.latitude = latitude;
   prevPosition.longitude = longitude;
+
+  console.log("現在位置が更新されました。");
+  console.log("現在位置は北緯" + latitude + "°、東経" + longitude + "°です。");
 }
 
 // 対象地域にいるかどうか
@@ -72,14 +77,16 @@ const watchPositionSuccess = (pos) => {
       totalMovement += getMovement(latitude, longitude);
       setPrevPosition(latitude, longitude);
 
-      console.log(localStorage.getItem("totalMovement"));
-      console.log(totalMovement);
+      console.log("移動距離が更新されました。");
+      console.log("これまでの総移動距離は約" + totalMovement + "mです。");
     }
   } else {  // （対象地域における）初期位置が設定されていない場合
     if (isInTargetArea(latitude, longitude)) {  //対象地域に入ったら
       // 初期位置を設定
       setPrevPosition(latitude, longitude);
       isSetInitialPosition = true;
+
+      console.log("本ページにおける初期位置が設定されました。")
     }
   }
 }
