@@ -12,5 +12,4 @@
             <input type="submit" value="会員追加">
         </form>
 </div>
-
 <?php require 'footer.php'; ?>

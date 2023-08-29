@@ -112,13 +112,13 @@ if (isset($_REQUEST['command'])) {
     <title>ウォーキング</title>
 </head>
 <body>
-    <div class= ccc>
+    <div class= "ccc">
         <h1>タイトル</h1>
     </div>
     <?php
     // ログインしているか
     if (isset($_SESSION['customer'])) {
-        echo"<div class= ccc>";
+        echo"<div class= 'ccc'>";
         echo '<a href="account.php">';
         echo 'ACCOUNT';
         echo '</a>';
@@ -127,7 +127,7 @@ if (isset($_REQUEST['command'])) {
         echo '</a>';
         echo "</div>";
     } else {
-        echo"<div class= ccc>";
+        echo"<div class= 'ccc'>";
         echo '<a href="login.php">';
         echo 'LOGIN';
         echo '</a>';
