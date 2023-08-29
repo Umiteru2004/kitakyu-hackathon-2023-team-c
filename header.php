@@ -56,10 +56,55 @@ if (isset($_REQUEST['command'])) {
                 echo $alert;
             }
             break;
-        }}
+                // 電話番号変更
+        case 'address':
+            $id = $_SESSION['customer']['id'];
+            $sql=$pdo->prepare('update customer set address=? where id=?');
+            $sql->execute([$_REQUEST['address'], $id]);
+            $_SESSION['customer']=[
+            'id'      =>$id,
+            'username'    =>htmlspecialchars($_REQUEST['username']),
+            'password'=>htmlspecialchars($_REQUEST['password']),
+            'address' =>htmlspecialchars($_REQUEST['address']),
+            ];
+            break;
+        // パスワード変更
+        case 'password':
+            $flag = 1;
+            $id = $_SESSION['customer']['id'];
+            $sql=$pdo->prepare('select * from customer where id=?');
+            $sql->execute([$id]);
+            foreach ($sql as $row) {
+            if ($row['password'] != $_REQUEST['password']) {
+                $alert = "<script type='text/javascript'>alert('パスワードが間違っています');</script>";
+                echo $alert;
+                $flag = 0;
+            }
+            }
+            if ($flag) {
+            if ($_REQUEST['new_password'] != $_REQUEST['confirm_new_password']) {
+                $alert = "<script type='text/javascript'>alert('入力されたパスワードが一致しません');</script>";
+                echo $alert;
+                break;
+            }
+            $username = $_SESSION['customer']['username'];
+            $address = $_SESSION['customer']['address'];
+            $sql=$pdo->prepare('update customer set password=? where id=?');
+            $sql->execute($_REQUEST['new_password'], $id);
+            $_SESSION['customer']=[
+                'id'      =>$id,
+                'username'    =>$username,
+                'password'=>$_REQUEST['new_password'],
+                'address' =>$address
+            ];
+            break;
+            }
+            break;
+        }
+    }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

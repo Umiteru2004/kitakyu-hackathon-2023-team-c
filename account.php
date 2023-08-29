@@ -23,6 +23,24 @@ $sql_points->execute([$_SESSION['customer']['id']]);
     }
     ?>
 
+    <form action="account.php" method="post">
+        <input type="hidden" name="command" value="address">
+        <?php
+        echo '<input type="hidden" name="name" value="', $_SESSION['customer']['username'], '">';
+        echo '<input type="hidden" name="password" value="', $_SESSION['customer']['password'], '">';
+        echo '<table>';
+        echo '<tr><td><label>ADDRESS</label></td>';
+        echo '<td><input type="text" name="address" value="', $_SESSION['customer']['address'], '" required></td>';
+        echo '<td><button type="submit">変更</button></td></tr>';
+        echo '<tr><td><label>Password</label></td>';
+        echo '<td>';
+        echo '********';
+        echo '</td>';
+        echo '<td><a href="change_pass.php"><button type="button" onclick="location.href=\'change_pass.php\'">変更</button></a></td></tr>';
+        echo '</table>';
+        ?>
+    </form>
+
     <div class="bbb">
         <form action="login.php" method="post">
             <input type="hidden" name="command" value="logout">
