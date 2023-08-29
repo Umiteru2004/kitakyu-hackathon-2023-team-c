@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="a.css">
+    <title>Document</title>
+</head>
+<body>
+<div class="bbb">
+    <h1>新しい会員追加</h1>
+        <form method="POST" action="login.php">
+        <input type="hidden" name="command" value="regist">  
+            <label>ユーザー名: <input type="text" name="name" required></label><br>
+            <label>アドレス: <input type="text" name="address" required></label><br>
+            <label>パスワード: <input type="password" name="password" required></label><br>
+            <label>パスワード(確認): <input type="password" name="confirm_password" required></label><br>
+            <input type="submit" value="会員追加">
+        </form>
+</div>
+</body>
+</html>
