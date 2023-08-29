@@ -1,6 +1,8 @@
 let totalMovement = 0;                      // 総移動距離
 let isSetInitialPosition = false;           // （対象地域における）初期位置が設定されたか
 
+const storedTotalMovement = Number(localStorage.getItem("totalMovement"));  // ローカルストレージに保存されている移動距離の記録を読み込み
+
 const HORIZONTAL_ANGLE = 180;               // 水平角
 const ONE_REVOLUTION_ANGLE = 360;           // 一回転の角度
 const EQUATORIAL_CIRCUMFERENCE = 40076500;  // 赤道円周
@@ -17,6 +19,15 @@ const prevPosition = {
   latitude: 0,
   longitude: 0,
 };
+
+if (storedTotalMovement) {  // ローカルストレージに保存されている移動距離の記録がある場合
+  // 総移動距離の初期値を記録に合わせる
+  totalMovement = storedTotalMovement;
+}
+
+// ページ終了時に総移動距離をローカルストレージに保存
+const pageUnload = () => localStorage.setItem("totalMovement", totalMovement);
+window.addEventListener("unload", pageUnload);
 
 // 前回取得した位置情報の設定
 const setPrevPosition = (latitude, longitude) => {
@@ -61,6 +72,7 @@ const watchPositionSuccess = (pos) => {
       totalMovement += getMovement(latitude, longitude);
       setPrevPosition(latitude, longitude);
 
+      console.log(localStorage.getItem("totalMovement"));
       console.log(totalMovement);
     }
   } else {  // （対象地域における）初期位置が設定されていない場合
