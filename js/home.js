@@ -1,4 +1,8 @@
-let totalMovement = 0                       // 総移動距離
+// メニューバーのページリンクをハイライト
+const pageLink = document.getElementById("home-link");
+pageLink.classList.add("active");
+
+let totalMovement = 0;                      // 総移動距離
 let isSetInitialPosition = false;           // （対象地域における）初期位置が設定されたか
 
 const HORIZONTAL_ANGLE = 180;               // 水平角
