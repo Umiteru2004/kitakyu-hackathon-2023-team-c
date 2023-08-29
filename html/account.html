@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="a.css">
+    <title>Document</title>
+</head>
+<body>
+        <div class="aaa">
+            <br>
+            <p>ユーザー名: " . $_SESSION['customer']['name'] . "</p>
+            <p>アドレス: " . $_SESSION['customer']['address'] . "</p>
+            <p>所得しているポイント: " . $row_points['points'] ."</p>
+            </div>
+        <div class="bbb">
+        <form action="account.php" method="post">
+            <input type="hidden" name="command" value="address">
+            <input type="hidden" name="name" value="', $_SESSION['customer']['name'], '">
+            <input type="hidden" name="password" value="', $_SESSION['customer']['password'], '">
+            <table>
+            <p>ADDRESS</p>
+            <p><input type="text" name="address" value="', $_SESSION['customer']['address'], '" required></p>
+            <p><button type="submit">変更</button></p>
+            <p>Password</p>
+            <p>********</p>
+            <a href="change_pass.php"><button type="button" onclick=>変更</button></a>
+            </table>
+        </form>
+            <form action="login.php" method="post">
+                <input type="hidden" name="command" value="logout">
+                <input type="submit" value="ログアウト">
+            </form>
+        </div>
+    </body>
+    </html>
+

@@ -1,0 +1,22 @@
+コピー用
+		<table>
+			<tr>
+				<td>セル1</td> <!-- セル -->
+				<td>セル2</td>
+			</tr>
+		</table>
+		
+		<p>ユーザー名: " . $_SESSION['customer']['username'] . </p>
+        <p>アドレス: " . $_SESSION['customer']['address'] . </p>
+        <p>ポイントはありません</p>
+
+		echo"<table>";
+			echo"<tr>";
+			echo "<td>ユーザー名: " . $_SESSION['customer']['username']."</td>";
+			echo "<br>";
+			echo "<td>アドレス: " . $_SESSION['customer']['address']."</td>";
+			echo "<br>";
+			echo '<td>ポイントはありません</td>';
+			echo"</tr>";
+			echo"</table>";
+

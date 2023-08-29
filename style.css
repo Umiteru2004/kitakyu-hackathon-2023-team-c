@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.ccc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: #ffffff;
+}
+
+.ccc a {
+    text-decoration: none;
+    color: #333333;
+    padding: 10px 20px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    margin: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.ccc a:hover {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+/* 中央に配置するコンテナ */
+.bbb {
+    height: 500px;
+    background-color: #ffffff;
+}
+
+/* フォームスタイル */
+form {
+    text-align: center;
+}
+
+form label, form input {
+    margin: 5px;
+}
+
+h1 {
+    margin-top: auto;
+    margin-bottom: 20px; /* タイトルの下に余白を設定 */
+    text-align: center;
+}
+
+
+.aaa{
+    margin: auto;
+    text-align: center;
+    background-color: #ffffff;
+}

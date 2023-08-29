@@ -19,7 +19,7 @@ if (isset($_SESSION['customer'])) {
         echo '<tbody>';
         echo '<tr>';
         echo '<td>', $row['id'], '</td>';
-        echo '<td>', $row['username'], '</td>';
+        echo '<td>', $row['name'], '</td>';
         echo '<td>', $row['password'], '</td>';
         echo '<td>', $row['address'], '</td>';
         echo '</tr>';

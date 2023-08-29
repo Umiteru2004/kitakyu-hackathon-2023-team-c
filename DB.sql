@@ -7,7 +7,7 @@ use hakkason;
 -- ユーザー
 create table customer (
     id int auto_increment primary key,
-    username varchar(100) not null unique,
+    name varchar(100) not null unique,
     address varchar(100) not null,
     password varchar(100) not null
 );
@@ -21,4 +21,4 @@ create table points (
 );
 
 -- ユーザーデータの挿入
-insert into customer (username, address, password) values ('Miyosi', '福岡市', 'aaa_admin');
+insert into customer (name, address, password) values ('Miyosi', '福岡市', 'aaa_admin');
