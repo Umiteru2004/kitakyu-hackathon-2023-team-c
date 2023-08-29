@@ -1,3 +1,3 @@
 // メニューバーのページリンクをハイライト
-const pageLink = document.getElementById("home-link");
+const pageLink = document.getElementById("point-link");
 pageLink.classList.add("active");
