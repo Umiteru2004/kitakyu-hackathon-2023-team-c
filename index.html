@@ -33,8 +33,6 @@
           maximumAge: 0                // キャッシュ有効期間（ミリ秒）
         };
         watch_id = window.navigator.geolocation.watchPosition(monitor, error, p_options);
-        // ボタン表記を変更
-        button.textContent = "測定停止";
       }
     };  // getPosi2()  ---------------
 
@@ -49,7 +47,6 @@
       watchTime = new Date().getTime();
       var latitude = event.coords.latitude;       // 緯度
       var longitude = event.coords.longitude;     // 経度
-      document.querySelector('#accu').textContent = event.coords.accuracy.toFixed(0);
       var Pset = new L.LatLng(latitude, longitude);
       marktxt = latitude.toFixed(6) + ', ' + longitude.toFixed(6);
       marker = L.marker(Pset).addTo(mapobj).bindPopup(marktxt).openPopup();
@@ -95,9 +92,6 @@
     </defs>
   </svg>
 
-  <div style="text-align:center;">
-    <span id="accu"></span>
-  </div>
   <div id="mapDiv">ここに地図を表示</div>
 
   <!-- フッター -->
