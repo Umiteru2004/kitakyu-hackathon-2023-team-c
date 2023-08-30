@@ -27,6 +27,12 @@ if (storedTotalMovement) {  // ローカルストレージに保存されてい�
   console.log("ローカルストレージからこれまでの移動距離を読み込みました。")
 }
 
+const resetRecord = () => {
+  totalMovement = 0;
+
+  console.log("記録がリセットされました。");
+}
+
 // ページ終了時に総移動距離をローカルストレージに保存
 const pageUnload = () => localStorage.setItem("totalMovement", totalMovement);
 window.addEventListener("unload", pageUnload);

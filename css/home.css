@@ -1,4 +1,5 @@
 #mapDiv {
   width: 100%;
-  height: calc(100% - 49px);
+  /* 100% - (ヘッダー高さ + フッター高さ) （ヘッダー・フッター高さはborderを含む）*/
+  height: calc(100% - (50px + 44px));
 }
