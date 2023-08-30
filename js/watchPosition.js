@@ -83,6 +83,14 @@ const watchPositionSuccess = (pos) => {
       totalMovement += getMovement(latitude, longitude);
       setPrevPosition(latitude, longitude);
 
+      /*
+        記録の表示の更新。
+        このコードはよくない。本来であればbody最下部のscriptでtotalMovementを監視するべき。
+        取得する要素が描画される前にwatchPositionにsuccessするとrecord定数はnullになる。
+      */
+      const record = document.getElementById("record");
+      record.innerText = "記録: " + totalMovement + " m";
+
       console.log("移動距離が更新されました。");
       console.log("これまでの総移動距離は約" + totalMovement + "mです。");
     }
