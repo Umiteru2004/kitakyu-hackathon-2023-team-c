@@ -47,7 +47,6 @@
       watchTime = new Date().getTime();
       var latitude = event.coords.latitude;       // 緯度
       var longitude = event.coords.longitude;     // 経度
-      document.querySelector('#accu').textContent = event.coords.accuracy.toFixed(0);
       var Pset = new L.LatLng(latitude, longitude);
       marktxt = latitude.toFixed(6) + ', ' + longitude.toFixed(6);
       marker = L.marker(Pset).addTo(mapobj).bindPopup(marktxt).openPopup();
@@ -93,9 +92,6 @@
     </defs>
   </svg>
 
-  <div style="text-align:center;">
-    <span id="accu"></span>
-  </div>
   <div id="mapDiv">ここに地図を表示</div>
 
   <!-- フッター -->
