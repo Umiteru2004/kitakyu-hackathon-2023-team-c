@@ -6,5 +6,11 @@ html, body {
 }
 body {
   margin: initial;
+  color: #333333;
   font-family: 'Noto Sans JP', sans-serif;
+}
+button {
+  border: initial;
+  font-family: inherit;
+  background-color: initial;
 }
